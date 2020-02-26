@@ -1,5 +1,5 @@
 <template>
-  <div class="dev-box bg-red-100 flex flex-col min-h-screen">
+  <div class="bg-gray-400 flex flex-col min-h-screen">
     <navbar />
     <layout-header />
     <layout-content>

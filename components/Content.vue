@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-6 mx-auto dev-box flex-grow flex-shrink-0 bg-white">
+  <div class="container p-6 mx-auto flex-grow flex-shrink-0 bg-white">
     <slot />
   </div>
 </template>

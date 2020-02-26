@@ -7,3 +7,11 @@ export const textToPost = (text, charNum) => {
 
   return text
 }
+
+export const formatDate = (date) => {
+  if (date.includes('T')) {
+    return date.split('T')[0]
+  }
+
+  return date
+}

@@ -1,10 +1,10 @@
 <template>
-  <div class="dev-box mb-6">
+  <div class="mb-6">
     <div class="mb-4 h-64">
       <img class="w-full object-cover h-full" :src="post.picture" />
     </div>
     <div class="mb-4 min-h-40">
-      <p class="text-sm">publishing date</p>
+      <p class="text-sm">{{ date }}</p>
       <h2 class="mb-4">{{ post.title }}</h2>
       <p>
         {{ lead }}
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { textToPost } from '../utils'
+import { textToPost, formatDate } from '../utils'
 
 export default {
   props: {
@@ -27,6 +27,9 @@ export default {
   computed: {
     lead() {
       return textToPost(this.post.article, 35)
+    },
+    date() {
+      return formatDate(this.post.uploaded)
     }
   }
 }
