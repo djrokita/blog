@@ -7,7 +7,7 @@ h2 {
   @apply text-2xl font-semibold;
 }
 h3 {
-  @apply text-xl;
+  @apply text-xl font-semibold;
 }
 
 @tailwind components;
