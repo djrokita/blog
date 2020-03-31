@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
     <main class="w-8/12">
-      <Post v-for="post in posts" :key="post.id" :post="post" />
+      <Post v-for="post in postsToDisplay" :key="post.id" :post="post" />
     </main>
     <aside class="px-6 w-4/12">
       <div>
@@ -17,6 +17,7 @@
       <div>
         <form class="w-full my-4">
           <input
+            v-model="input"
             type="text"
             class="border border-solid border-gray-400 block bg-gray-300 w-full p-2 mb-4 tracking-wide"
             placeholder="post title"
@@ -31,7 +32,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import Post from '../components/Post'
 
 export default {
@@ -41,10 +42,19 @@ export default {
   async fetch({ store }) {
     await store.dispatch('fetchPosts')
   },
+  data() {
+    return {
+      input: ''
+    }
+  },
   computed: {
     ...mapGetters(['getMostLiked']),
-    posts() {
-      return this.$store.state.posts
+    ...mapState(['allPosts', 'postsToDisplay'])
+  },
+  methods: {
+    ...mapActions(['filterPosts']),
+    submitHandler(e) {
+      this.filterPosts(e.target.value)
     }
   }
 }
